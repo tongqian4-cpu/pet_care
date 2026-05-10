@@ -1,0 +1,18 @@
+node_modules
+.next
+out
+dist
+*.tsbuildinfo
+.env*.local
+.next-dev.log
+.next-dev.err
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Local source images and root screenshots kept as working references.
+/assets/
+/*.png

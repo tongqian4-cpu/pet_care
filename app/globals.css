@@ -765,25 +765,73 @@ textarea {
   position: relative;
 }
 
-.map-visual {
-  position: relative;
-  min-height: 430px;
+.map-panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  padding: 28px 28px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.map-panel-head h2 {
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+.map-nav-button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  border-radius: 8px;
+  color: var(--white);
+  background: var(--ink);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.map-nav-button:hover {
+  background: #244b4f;
+}
+
+.map-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.38fr);
+  gap: 0;
+  align-items: stretch;
+}
+
+.map-main {
+  min-width: 0;
+  display: grid;
+  gap: 14px;
+  padding: 18px;
   background: #edf7ed;
+}
+
+.map-visual {
+  min-width: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: #f6f3df;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .map-visual img {
   width: 100%;
-  height: 100%;
-  min-height: 430px;
-  object-fit: cover;
+  height: auto;
+  min-height: 0;
+  max-height: 760px;
+  object-fit: contain;
   object-position: center;
+  background: #f6f3df;
 }
 
 .map-address-card {
-  position: absolute;
-  left: clamp(28px, 30%, 360px);
-  bottom: 28px;
-  max-width: min(420px, calc(100% - 56px));
+  max-width: none;
   padding: 18px;
   border: 1px solid rgba(220, 231, 228, 0.95);
   border-radius: 8px;
@@ -821,6 +869,53 @@ textarea {
   background: var(--mint);
   font-size: 13px;
   font-weight: 800;
+}
+
+.map-guide {
+  min-width: 0;
+  display: grid;
+  align-content: stretch;
+  gap: 0;
+  border-left: 1px solid var(--line);
+  background: #fbfefd;
+  position: relative;
+  z-index: 2;
+}
+
+.map-guide-card {
+  padding: 24px;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.map-guide-card:last-child {
+  border-bottom: 0;
+}
+
+.map-guide-card span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--coral-dark);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.map-guide-card strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 20px;
+  line-height: 1.32;
+  overflow-wrap: anywhere;
+}
+
+.map-guide-card p {
+  margin: 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.map-guide-card.primary {
+  background: var(--mint);
 }
 
 .footer {
@@ -893,6 +988,29 @@ textarea {
 
   .review-controls {
     padding-top: 0;
+  }
+
+  .map-content {
+    grid-template-columns: 1fr;
+  }
+
+  .map-main {
+    padding: 14px;
+  }
+
+  .map-guide {
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .map-guide-card {
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+  }
+
+  .map-guide-card:last-child {
+    border-right: 0;
   }
 
   .salon-shot {
@@ -968,14 +1086,29 @@ textarea {
 
   .map-visual,
   .map-visual img {
-    min-height: 360px;
+    min-height: 320px;
+  }
+
+  .map-panel-head {
+    display: grid;
+    padding: 22px 20px 16px;
+  }
+
+  .map-nav-button {
+    width: 100%;
+  }
+
+  .map-guide {
+    grid-template-columns: 1fr;
+  }
+
+  .map-guide-card {
+    padding: 20px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
   }
 
   .map-address-card {
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
-    max-width: none;
     padding: 16px;
   }
 

@@ -46,6 +46,9 @@ const environmentSlides = [
   },
 ];
 
+const storeAddress = "重庆市南岸区崇文路80号重庆邮电大学崇文门附近";
+const baiduNavigationUrl = `https://api.map.baidu.com/direction?destination=${encodeURIComponent(storeAddress)}&mode=walking&region=${encodeURIComponent("重庆")}&output=html&src=${encodeURIComponent("pet_care")}`;
+
 const packages = [
   {
     tag: "日常清洁",
@@ -366,17 +369,45 @@ export default function Home() {
               </form>
             </div>
             <div className="map-panel">
-              <div className="map-visual" role="img" aria-label="重庆市南岸区崇文路80号重庆邮电大学附近的宠物店风格位置示意图">
-                <img src="/assets/cute-location-map.png" alt="宠物店风格地图，标注重庆邮电大学崇文门附近店铺位置" />
-                <div className="map-address-card">
-                  <strong>店铺位置</strong>
-                  <p>重庆市南岸区崇文路80号重庆邮电大学</p>
-                  <div className="map-badges" aria-label="位置提示">
-                    <span className="map-badge">崇文门附近</span>
-                    <span className="map-badge">崇文路沿线</span>
-                    <span className="map-badge">可导航到店</span>
+              <div className="map-panel-head">
+                <div>
+                  <p className="section-kicker">到店地图</p>
+                  <h2>重庆邮电大学崇文门附近</h2>
+                </div>
+                <a className="map-nav-button" href={baiduNavigationUrl} target="_blank" rel="noreferrer">导航到店</a>
+              </div>
+              <div className="map-content">
+                <div className="map-main">
+                  <div className="map-visual" role="img" aria-label="重庆市南岸区崇文路80号重庆邮电大学附近的宠物店风格位置示意图">
+                    <img src="/assets/cute-location-map.png" alt="宠物店风格地图，标注重庆邮电大学崇文门附近店铺位置" />
+                  </div>
+                  <div className="map-address-card">
+                    <strong>店铺位置</strong>
+                    <p>重庆市南岸区崇文路80号重庆邮电大学</p>
+                    <div className="map-badges" aria-label="位置提示">
+                      <span className="map-badge">崇文门附近</span>
+                      <span className="map-badge">崇文路沿线</span>
+                      <span className="map-badge">可导航到店</span>
+                    </div>
                   </div>
                 </div>
+                <aside className="map-guide" aria-label="到店路线说明">
+                  <div className="map-guide-card primary">
+                    <span>导航关键词</span>
+                    <strong>重庆邮电大学崇文门</strong>
+                    <p>店铺位于崇文门附近，到达校门后沿崇文路沿线步行查找。</p>
+                  </div>
+                  <div className="map-guide-card">
+                    <span>路线参照</span>
+                    <strong>崇文路沿线社区商业</strong>
+                    <p>地图左侧为文峰阁小区、南福苑小区方向，右侧为重邮校区。</p>
+                  </div>
+                  <div className="map-guide-card">
+                    <span>到店建议</span>
+                    <strong>宠物请牵引或装入航空箱</strong>
+                    <p>猫咪建议使用结实猫包；中大型犬建议提前电话确认接待时段。</p>
+                  </div>
+                </aside>
               </div>
             </div>
           </div>

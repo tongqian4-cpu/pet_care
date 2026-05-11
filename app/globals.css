@@ -607,14 +607,116 @@ h2 {
   color: var(--muted);
 }
 
+.review-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.review-controls {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.review-controls button {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--white);
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+  box-shadow: 0 10px 24px rgba(23, 48, 51, 0.08);
+}
+
+.review-controls button:hover {
+  border-color: rgba(255, 125, 97, 0.5);
+  color: var(--coral-dark);
+}
+
+.review-carousel {
+  overflow: hidden;
+}
+
+.review-page {
+  animation: reviewSlideIn 0.48s ease both;
+}
+
 .review-card {
+  min-height: 250px;
   padding: 22px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.review-card::before {
+  content: "“";
+  position: absolute;
+  top: 4px;
+  right: 18px;
+  color: rgba(143, 199, 181, 0.24);
+  font-family: Georgia, serif;
+  font-size: 86px;
+  line-height: 1;
+}
+
+.review-card p {
+  position: relative;
+  flex: 1;
+}
+
+.review-card strong {
+  margin-top: 18px;
+  color: #2f5659;
+  font-size: 14px;
 }
 
 .stars {
   margin-bottom: 12px;
   color: var(--gold);
   font-weight: 900;
+}
+
+.review-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.review-dots button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #bfd3ce;
+  cursor: pointer;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+
+.review-dots button.active {
+  width: 30px;
+  background: var(--coral);
+}
+
+@keyframes reviewSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .visit {
@@ -785,6 +887,14 @@ textarea {
     align-items: stretch;
   }
 
+  .review-head {
+    display: grid;
+  }
+
+  .review-controls {
+    padding-top: 0;
+  }
+
   .salon-shot {
     min-height: 320px;
   }
@@ -831,6 +941,15 @@ textarea {
   .info-panel,
   .contact-panel {
     padding: 20px;
+  }
+
+  .review-card {
+    min-height: 210px;
+  }
+
+  .review-controls button {
+    width: 40px;
+    height: 40px;
   }
 
   .environment-slide {

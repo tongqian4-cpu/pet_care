@@ -78,10 +78,20 @@ const steps = [
 ];
 
 const reviews = [
-  ["洗完很蓬松", "比熊之前很怕吹风，这次店员会分段安抚，洗完毛很顺，还拍了护理照片。"],
-  ["猫咪也能适应", "猫咪第一次来，先让它熟悉环境，没有强行加快流程，回家状态挺稳定。"],
-  ["沟通很清楚", "毛结严重会提前说价格和风险，剪完效果比预期自然，后续打理也讲得明白。"],
+  ["洗完很蓬松", "比熊之前很怕吹风，这次店员会分段安抚，洗完毛很顺，还拍了护理照片。", "团团主人"],
+  ["猫咪也能适应", "猫咪第一次来，先让它熟悉环境，没有强行加快流程，回家状态挺稳定。", "奶盖主人"],
+  ["沟通很清楚", "毛结严重会提前说价格和风险，剪完效果比预期自然，后续打理也讲得明白。", "可乐主人"],
+  ["除味效果明显", "雨天遛完回来味道比较重，做完除味护理后清爽很多，脚底和耳朵也处理得很细。", "豆包主人"],
+  ["接送很省心", "工作日没时间到店，提前约了接送，洗护完成会发照片和到家提醒，流程很顺。", "栗子主人"],
+  ["造型很自然", "之前剪过几次都太短，这次先沟通脸型和身体长度，剪完精神但不突兀。", "毛毛主人"],
+  ["环境很干净", "洗护区能看到分隔和消毒，毛巾、工具摆放都很整齐，第一次到店就比较安心。", "布丁主人"],
+  ["长毛护理到位", "萨摩换毛期掉毛厉害，梳理后蓬松很多，店员还提醒了回家梳毛频率。", "雪球主人"],
+  ["价格说明透明", "下单前会先看毛量和毛结情况，增加项目会提前确认，没有临时加价的感觉。", "芝麻主人"],
 ];
+
+const reviewPages = Array.from({ length: Math.ceil(reviews.length / 3) }, (_, index) =>
+  reviews.slice(index * 3, index * 3 + 3),
+);
 
 function ServiceIcon({ name }: { name: string }) {
   if (name === "scissors") {
@@ -117,12 +127,20 @@ function ServiceIcon({ name }: { name: string }) {
 
 export default function Home() {
   const [slide, setSlide] = useState(0);
+  const [reviewPage, setReviewPage] = useState(0);
   const [toast, setToast] = useState("");
 
   useEffect(() => {
     const timer = window.setInterval(() => {
       setSlide((current) => (current + 1) % environmentSlides.length);
     }, 5200);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setReviewPage((current) => (current + 1) % reviewPages.length);
+    }, 4600);
     return () => window.clearInterval(timer);
   }, []);
 
@@ -147,6 +165,10 @@ export default function Home() {
 
   function showSlide(index: number) {
     setSlide((index + environmentSlides.length) % environmentSlides.length);
+  }
+
+  function showReviewPage(index: number) {
+    setReviewPage((index + reviewPages.length) % reviewPages.length);
   }
 
   return (
@@ -285,12 +307,38 @@ export default function Home() {
 
         <section className="section alt" aria-label="客户评价">
           <div className="wrap">
-            <div className="section-head">
-              <p className="section-kicker">真实体验</p>
-              <h2>让宠物干净，也让主人少一点担心</h2>
+            <div className="review-head">
+              <div className="section-head">
+                <p className="section-kicker">真实体验</p>
+                <h2>让宠物干净，也让主人少一点担心</h2>
+              </div>
+              <div className="review-controls" aria-label="客户评价轮播控制">
+                <button type="button" aria-label="上一组评价" onClick={() => showReviewPage(reviewPage - 1)}>‹</button>
+                <button type="button" aria-label="下一组评价" onClick={() => showReviewPage(reviewPage + 1)}>›</button>
+              </div>
             </div>
-            <div className="review-grid">
-              {reviews.map(([title, text]) => <article className="review-card" key={title}><div className="stars" aria-label="五星评价">★★★★★</div><h3>{title}</h3><p>{text}</p></article>)}
+            <div className="review-carousel">
+              <div className="review-grid review-page" key={reviewPage}>
+                {reviewPages[reviewPage].map(([title, text, author]) => (
+                  <article className="review-card" key={title}>
+                    <div className="stars" aria-label="五星评价">★★★★★</div>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                    <strong>{author}</strong>
+                  </article>
+                ))}
+              </div>
+              <div className="review-dots" aria-label="客户评价轮播分页">
+                {reviewPages.map((_, index) => (
+                  <button
+                    className={reviewPage === index ? "active" : ""}
+                    type="button"
+                    aria-label={`查看第 ${index + 1} 组评价`}
+                    onClick={() => showReviewPage(index)}
+                    key={index}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>

@@ -1,0 +1,21 @@
+06月13日作业：Git安装与代码托管
+
+GitHub仓库：tongqian4-cpu/pet_care
+GitHub目录：homework/613/git-hosting-demo
+本地目录：D:\shixun\613\git-hosting-demo
+本地打包文件：D:\shixun\613\张桐千613.zip
+
+已执行命令：
+1. git --version
+   输出：git version 2.54.0.windows.1
+2. git init -b main
+3. git add .
+4. git commit -m "第一次提交"
+5. git remote add origin D:\shixun\613\remote\git-hosting-demo.git
+6. git push -u origin main
+
+本地截图文件：
+1. D:\shixun\613\screenshots\01-git安装成功截图.png
+2. D:\shixun\613\screenshots\02-本地仓库创建截图.png
+3. D:\shixun\613\screenshots\03-提交记录截图.png
+4. D:\shixun\613\screenshots\04-远程仓库代码托管成功截图.png

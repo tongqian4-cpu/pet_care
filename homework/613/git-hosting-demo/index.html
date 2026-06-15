@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git 安装与代码托管作业</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">06月13日作业</p>
+      <h1>Git 安装与代码托管</h1>
+      <p>本项目用于演示 Git 本地仓库初始化、代码提交和远程仓库推送流程。</p>
+    </section>
+
+    <section class="steps" aria-label="Git 作业步骤">
+      <article>
+        <span>1</span>
+        <h2>安装 Git</h2>
+        <p>使用 <code>git --version</code> 验证安装结果。</p>
+      </article>
+      <article>
+        <span>2</span>
+        <h2>创建本地仓库</h2>
+        <p>在项目目录中执行 <code>git init</code> 完成初始化。</p>
+      </article>
+      <article>
+        <span>3</span>
+        <h2>提交代码</h2>
+        <p>执行 <code>git add .</code> 和 <code>git commit</code> 保存第一次提交。</p>
+      </article>
+      <article>
+        <span>4</span>
+        <h2>推送远程仓库</h2>
+        <p>添加 <code>origin</code> 后执行 <code>git push -u origin main</code>。</p>
+      </article>
+    </section>
+
+    <button id="statusButton" type="button">查看完成状态</button>
+    <p id="status" class="status">等待检查</p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

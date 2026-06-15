@@ -1,0 +1,100 @@
+:root {
+  color-scheme: light;
+  font-family: "Microsoft YaHei", Arial, sans-serif;
+  color: #172033;
+  background: #f4f7fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.page {
+  width: min(960px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.hero {
+  padding: 40px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #dce4f2;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #315fbd;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: 36px;
+}
+
+.hero p:last-child {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+article {
+  padding: 22px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #dce4f2;
+}
+
+article span {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 50%;
+  background: #315fbd;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 16px 0 8px;
+  font-size: 20px;
+}
+
+article p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #edf2ff;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 20px;
+  color: #ffffff;
+  background: #315fbd;
+  cursor: pointer;
+}
+
+.status {
+  display: inline-block;
+  margin-left: 12px;
+  font-weight: 700;
+}
